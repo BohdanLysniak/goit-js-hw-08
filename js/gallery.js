@@ -61,7 +61,21 @@ const images = [
     original:
       "https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg",
     description: "Lighthouse Coast Sea",
-  }
+  },
 ];
 
 const gallery = document.querySelector(".gallery");
+const galleryMarkup = images.map(({ preview, original, description }) => `<li class="gallery-item">
+  <a class="gallery-link" href="large-image.jpg">
+    <img
+      class="gallery-image"
+      src="${preview}"
+      data-source="${original}"
+      alt="${description}"
+    />
+  </a>
+</li>`).join("");
+
+gallery.insertAdjacentHTML("beforeend", galleryMarkup);
+
+
