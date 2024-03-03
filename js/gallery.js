@@ -66,7 +66,6 @@ const images = [
 
 
 const gallery = document.querySelector(".gallery");
-// const galleryItem = document.querySelector("gallery-item");
 
 const galleryMarkup = images.map(({ preview, original, description }) => `<li class="gallery-item">
   <a class="gallery-link" href="${original}">
@@ -81,13 +80,21 @@ const galleryMarkup = images.map(({ preview, original, description }) => `<li cl
 gallery.insertAdjacentHTML("beforeend", galleryMarkup);
 
 
-gallery.addEventListener("click", linkOriginalImage);
+gallery.addEventListener("click", openModalWindow);
 
-function linkOriginalImage(event) {
+function openModalWindow(event) {
   event.preventDefault();
   if (event.target === event.currentTarget) return;
-  console.log(event.target.dataset.source);
-
+  const elementValue = event.target;
+  const imageID = elementValue.dataset.source;
+  const imageAlt = elementValue.alt;
+  const instance = basicLightbox.create(`
+    <img
+      src="${imageID}"
+      alt="${imageAlt}"
+    />
+  `)
+  instance.show();
 };
 
 
