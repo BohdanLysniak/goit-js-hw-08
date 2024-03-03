@@ -19,15 +19,11 @@ img {
   flex-wrap: wrap;
   background: #fff;
   width: 1128px;
-  margin: 0 auto;
+  margin: 24px auto;
 }
 
 .gallery-link {
   display: block;
   width: 100%;
   height: 100%;
-}
-
-.gallery-item {
-  width: calc((100% - 48px) / 3);
 }

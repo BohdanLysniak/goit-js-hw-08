@@ -64,9 +64,12 @@ const images = [
   },
 ];
 
+
 const gallery = document.querySelector(".gallery");
+// const galleryItem = document.querySelector("gallery-item");
+
 const galleryMarkup = images.map(({ preview, original, description }) => `<li class="gallery-item">
-  <a class="gallery-link" href="large-image.jpg">
+  <a class="gallery-link" href="${original}">
     <img
       class="gallery-image"
       src="${preview}"
@@ -75,7 +78,17 @@ const galleryMarkup = images.map(({ preview, original, description }) => `<li cl
     />
   </a>
 </li>`).join("");
-
 gallery.insertAdjacentHTML("beforeend", galleryMarkup);
+
+
+gallery.addEventListener("click", linkOriginalImage);
+
+function linkOriginalImage(event) {
+  event.preventDefault();
+  if (event.target === event.currentTarget) return;
+  console.log(event.target.dataset.source);
+
+};
+
 
 
